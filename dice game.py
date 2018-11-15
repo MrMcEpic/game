@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[16]:
+# In[19]:
 
 
 import random
@@ -18,8 +18,8 @@ class Dice():
     def comp_roll(self):
         self.roll=random.randint(1,6)+random.randint(1,6) #roll 2 d6
     def input_drive(self):
-        self.user_input=input("Input a number and an [in]equality to compare against 2 random d6")
-        print("You input: {input}".format(input=self.user_input))
+        self.user_input=input("Input a number and an [in]equality to compare against 2 random d6\nExample: >2 to guess that 2 is less than computer roll\n")
+        #print("You input: {input}".format(input=self.user_input))
         for i in self.user_input:#New way to use for statements where i = element value instead of number
             if i.isdigit() == True:
                 self.user_num.append(i) #Keep track of just number from input in list
