@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[19]:
+# In[ ]:
 
 
 import random
@@ -36,16 +36,15 @@ class Dice():
                 self.win = self.comp_ops[self.track_op](self.dif, 0)
                 print("You guessed: x {op} {uguess}\nComputer rolled: {cguess}\n{cguess} {op} {uguess}\nDifference: {dif}\n{result}".format(uguess=self.user_num,op=self.track_op,cguess=self.roll,dif=self.abs_dif, result="Win! :)"if self.win==True else "Lose :("))
                 time.sleep(1)
-                print("Closing in 5 Seconds")
-                time.sleep(5)
+                print("Closing in 2 Seconds")
+                time.sleep(2)
         except:
             print("Error: Did not input [in]equality")
             
-mem=Dice()
 
 
 # In[ ]:
 
 
-
+mem=Dice()
 
