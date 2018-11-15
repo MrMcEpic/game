@@ -4,12 +4,6 @@
 # In[1]:
 
 
-# %load "dice game.py"
-#!/usr/bin/env python
-
-# In[6]:
-
-#test
 import random
 import time
 
@@ -29,21 +23,21 @@ class Dice():
         for i in range(len(user_input)):
             if user_input[i].isdigit() == True:
                 self.user_num.append(user_input[i]) #Keep track of just number from input in list
-                print("debug:",user_input[i],"is number")
+                #print("debug:",user_input[i],"is number")
             else:
                 #print(user_input[i],"is not number")
                 if user_input[i] == ">":
                     self.track_op=">"
-                    print(self.track_op)
+                    #print("debug: ",self.track_op)
                 elif user_input[i] == "<":
                     self.track_op="<"
-                    print(self.track_op)
+                    #print("debug: ",self.track_op)
                 elif user_input[i] == "=":
                     self.track_op="="
-                    print(self.track_op)
+                    #print("debug: ",self.track_op)
         self.user_num=int("".join(self.user_num)) #turn number list into one int
-        print("debug: user_num is %s" % self.user_num)
-        print("debug: roll %s" % self.roll)
+        #print("debug: user_num is %s" % self.user_num)
+        #print("debug: roll %s" % self.roll)
         self.logic()
     def logic(self):
         dif=self.roll-self.user_num
@@ -70,16 +64,12 @@ class Dice():
             else:
                 win=False
                 #win_lose="lost"
-        print("{win}\nComputer Guessed %d\nYou Guessed %d\nDifference %d\nClossing in 5 Seconds".format(win="Win! :)" if win==True else "Lose :(") % (self.roll,self.user_num,abs_dif))
+        print("{win}\nComputer Guessed %d\nYou Guessed %d\nDifference %d".format(win="Win! :)" if win==True else "Lose :(") % (self.roll,self.user_num,abs_dif))
         #print("%s\nComputer Guessed %s\nYou Guessed %s\nDifference %s" % (end[win_lose],self.roll,self.user_num,abs_dif))
+        time.sleep(1)
+        print("Closing in 5 Seconds")
         time.sleep(5)
 mem=Dice()
-
-
-# In[ ]:
-
-
-## 
 
 
 # In[ ]:
