@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[35]:
+# In[16]:
 
 
 import random
@@ -19,10 +19,8 @@ class Dice():
         self.roll=random.randint(1,6)+random.randint(1,6) #roll 2 d6
     def input_drive(self):
         self.user_input=input("Input a number and an [in]equality to compare against 2 random d6")
-        user_input=self.user_input
-        print("debug: User_Input %s" % user_input)
-        for i in user_input: #new way of using for... instead of i being element, i is each element of string
-            print(i)
+        print("You input: {input}".format(input=self.user_input))
+        for i in self.user_input:#New way to use for statements where i = element value instead of number
             if i.isdigit() == True:
                 self.user_num.append(i) #Keep track of just number from input in list
             else:
@@ -36,7 +34,7 @@ class Dice():
         try:
             if self.track_op in self.comp_ops:
                 self.win = self.comp_ops[self.track_op](self.dif, 0)
-                print("{result}\nComputer Guessed %d\nYou Guessed %d\nDifference %d".format(result="Win! :)" if self.win==True else "Lose :(") % (self.roll,self.user_num,self.abs_dif))
+                print("You guessed: x {op} {uguess}\nComputer rolled: {cguess}\n{cguess} {op} {uguess}\nDifference: {dif}\n{result}".format(uguess=self.user_num,op=self.track_op,cguess=self.roll,dif=self.abs_dif, result="Win! :)"if self.win==True else "Lose :("))
                 time.sleep(1)
                 print("Closing in 5 Seconds")
                 time.sleep(5)
@@ -44,4 +42,10 @@ class Dice():
             print("Error: Did not input [in]equality")
             
 mem=Dice()
+
+
+# In[ ]:
+
+
+
 
