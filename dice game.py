@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# In[1]:
+
+
+# %load "dice game.py"
+#!/usr/bin/env python
+
 # In[6]:
 
 #test
@@ -74,4 +80,10 @@ mem=Dice()
 
 
 ## 
+
+
+# In[ ]:
+
+
+
 
