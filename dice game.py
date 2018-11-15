@@ -1,66 +1,47 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[35]:
+
+
 import random
 import time
+import operator
 
 class Dice():
     def __init__(self):
         self.user_num=[]
         self.track_op=str
+        self.comp_ops={">":operator.gt,"<":operator.lt,"=":operator.eq} #create operator dictionary
         self.comp_roll()
         self.input_drive()
     def comp_roll(self):
         self.roll=random.randint(1,6)+random.randint(1,6) #roll 2 d6
     def input_drive(self):
-        self.user_input=input("Guess? 2-12 > | < | =\n")
+        self.user_input=input("Input a number and an [in]equality to compare against 2 random d6")
         user_input=self.user_input
-        #user_input=list(user_input)
         print("debug: User_Input %s" % user_input)
-        for i in range(len(user_input)):
-            if user_input[i].isdigit() == True:
-                self.user_num.append(user_input[i]) #Keep track of just number from input in list
-                #print("debug:",user_input[i],"is number")
+        for i in user_input: #new way of using for... instead of i being element, i is each element of string
+            print(i)
+            if i.isdigit() == True:
+                self.user_num.append(i) #Keep track of just number from input in list
             else:
-                #print(user_input[i],"is not number")
-                if user_input[i] == ">":
-                    self.track_op=">"
-                    #print("debug: ",self.track_op)
-                elif user_input[i] == "<":
-                    self.track_op="<"
-                    #print("debug: ",self.track_op)
-                elif user_input[i] == "=":
-                    self.track_op="="
-                    #print("debug: ",self.track_op)
-        self.user_num=int("".join(self.user_num)) #turn number list into one int
-        #print("debug: user_num is %s" % self.user_num)
-        #print("debug: roll %s" % self.roll)
+                if i in self.comp_ops.keys(): #using dictionary keys from comp_ops to see if operator is valid
+                    self.track_op = i
         self.logic()
     def logic(self):
-        dif=self.roll-self.user_num
-        abs_dif=abs(dif)
-        #end={"won":"Win!","lost":"Lost"}
-        if self.track_op == ">":
-            if dif > 0:
-                win=True
-                #win_lose="won"
-            else:
-                win=False
-                #win_lose="lost"
-        elif self.track_op == "<":
-            if dif < 0:
-                win=True
-                #win_lose="won"
-            else:
-                win=False
-                #win_lose="lost"
-        elif self.track_op == "=":
-            if dif == 0:
-                win=True
-                #win_lose="won"
-            else:
-                win=False
-                #win_lose="lost"
-        print("{win}\nComputer Guessed %d\nYou Guessed %d\nDifference %d".format(win="Win! :)" if win==True else "Lose :(") % (self.roll,self.user_num,abs_dif))
-        #print("%s\nComputer Guessed %s\nYou Guessed %s\nDifference %s" % (end[win_lose],self.roll,self.user_num,abs_dif))
-        time.sleep(1)
-        print("Closing in 5 Seconds")
-        time.sleep(5)
+        self.user_num=int("".join(self.user_num)) #turn number list into one int
+        self.dif=self.roll-self.user_num
+        self.abs_dif=abs(self.dif)
+        try:
+            if self.track_op in self.comp_ops:
+                self.win = self.comp_ops[self.track_op](self.dif, 0)
+                print("{result}\nComputer Guessed %d\nYou Guessed %d\nDifference %d".format(result="Win! :)" if self.win==True else "Lose :(") % (self.roll,self.user_num,self.abs_dif))
+                time.sleep(1)
+                print("Closing in 5 Seconds")
+                time.sleep(5)
+        except:
+            print("Error: Did not input [in]equality")
+            
 mem=Dice()
+
