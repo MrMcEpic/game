@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 import random
 import time
 import operator
@@ -41,10 +35,5 @@ class Dice():
         except:
             print("Error: Did not input [in]equality")
             
-
-
-# In[ ]:
-
-
 mem=Dice()
 
